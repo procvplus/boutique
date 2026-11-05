@@ -1,0 +1,617 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>*{box-sizing:border-box}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>كريم الكلف</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap">
+<style>
+/* Layout : hero nuit + pot 3D → bénéfices → avant/après → commande → émotion → routine → atouts → confiance → FAQ → CTA final ; barre d'achat toujours visible */
+:root{
+  --night:#0C1526;
+  --night-2:#17243C;
+  --pearl:#FBF8F5;
+  --paper:#FFFFFF;
+  --ink:#141B2D;
+  --ink-soft:#3E4860;
+  --line:#ECE4DC;
+  --gold:#E2B86B;
+  --gold-deep:#A87A2C;
+  --rose:#F5DCD2;
+  --rose-glow:#E9A08C;
+  --ok:#1E8E5E;
+  --err:#C2402F;
+  --display:"Cairo",Tahoma,sans-serif;
+  --body:"IBM Plex Sans Arabic","Segoe UI",Tahoma,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--pearl);color:var(--ink);font-family:var(--body);font-size:17.5px;font-weight:400;line-height:1.95;padding-bottom:96px;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+.wrap{max-width:560px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.5}
+h1{font-size:clamp(1.85rem,7.4vw,2.5rem);font-weight:800}
+h2{font-size:clamp(1.45rem,5.6vw,1.85rem);font-weight:800}
+h3{font-size:1.1rem;font-weight:700}
+p{margin:0}
+b{font-weight:600}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:8px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+
+/* bandeau */
+.topbar{background:var(--gold);color:var(--night);font-size:.88rem;font-weight:700;text-align:center}
+.topbar .wrap{padding-block:9px;display:flex;justify-content:center;gap:4px 16px;flex-wrap:wrap}
+
+/* HERO */
+.hero{position:relative;background:var(--night);color:#fff;overflow:hidden;padding-bottom:64px}
+.hero::before{content:"";position:absolute;inset:-20% -30% auto;height:120%;pointer-events:none;background:
+  radial-gradient(40% 35% at 50% 55%,rgba(233,160,140,.35),transparent 70%),
+  radial-gradient(35% 30% at 20% 30%,rgba(226,184,107,.2),transparent 70%),
+  radial-gradient(30% 30% at 85% 70%,rgba(90,120,200,.22),transparent 70%)}
+.hero .wrap{position:relative;display:grid;gap:22px;padding-block:34px 0;text-align:center}
+.badge{justify-self:center;display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(226,184,107,.5);color:var(--gold);border-radius:999px;padding:4px 16px;font-size:.88rem;font-weight:600;background:rgba(226,184,107,.08)}
+.badge i{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px var(--gold)}
+.hero h1 span{color:var(--gold)}
+.hero .lead{color:#DCE1EC;font-size:1.06rem;max-width:32ch;margin-inline:auto}
+.stage{position:relative;height:clamp(320px,90vw,430px);margin-inline:-20px}
+#jar3d{width:100%;height:100%;display:block;touch-action:pan-y;cursor:grab}
+#jar3d:active{cursor:grabbing}
+.ring{position:absolute;left:50%;top:50%;width:min(76vw,330px);aspect-ratio:1;transform:translate(-50%,-46%);border-radius:50%;border:1px solid rgba(226,184,107,.25);pointer-events:none}
+.ring.r2{width:min(94vw,410px);border-color:rgba(255,255,255,.07)}
+.drag-hint{position:absolute;bottom:4px;left:50%;transform:translateX(-50%);font-size:.8rem;color:#98A2B8;display:flex;gap:6px;align-items:center;white-space:nowrap}
+.drag-hint svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2}
+.float-tag{position:absolute;z-index:2;background:rgba(255,255,255,.09);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.16);border-radius:14px;padding:8px 12px;font-size:.82rem;color:#fff;text-align:start;line-height:1.5;animation:bob 5s ease-in-out infinite}
+.float-tag b{display:block;color:var(--gold);font-size:.95rem}
+.ft1{top:12%;inset-inline-start:20px}
+.ft2{bottom:16%;inset-inline-end:20px;animation-delay:-2.5s}
+@keyframes bob{50%{transform:translateY(-8px)}}
+.fallback{position:absolute;inset:0;display:grid;place-items:center}
+.fallback .jar{width:44%;max-width:200px;filter:drop-shadow(0 24px 30px rgba(0,0,0,.45))}
+.fallback .lid{height:34px;background:linear-gradient(90deg,#8a6526,var(--gold) 40%,#f6dda8 55%,#8a6526);border-radius:10px 10px 4px 4px}
+.fallback .body{margin-top:3px;background:linear-gradient(90deg,#e8ddd5,#fffaf6 40%,#f1e6de);border-radius:6px 6px 26px 26px;padding:22px 8px 26px}
+.fallback .band{background:var(--night);color:var(--gold);font-family:var(--display);font-weight:700;padding:8px 4px}
+.price-card{display:flex;align-items:center;justify-content:space-between;gap:14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:16px 20px;text-align:start}
+.price{font-family:var(--display);font-size:2.5rem;font-weight:800;line-height:1;color:#fff;font-variant-numeric:tabular-nums}
+.price small{font-size:1rem;color:var(--gold)}
+.price-card p{font-size:.92rem;color:#DCE1EC;line-height:1.6}
+.price-card p b{color:#fff}
+.chips{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.chip{border-radius:14px;padding:12px 4px;font-size:.82rem;font-weight:500;line-height:1.5;color:#E8ECF4;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);min-width:0}
+.chip svg{display:block;margin:0 auto 6px;width:22px;height:22px;stroke:var(--gold);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.hero-curve{position:absolute;left:0;right:0;bottom:-1px;height:44px;background:var(--pearl);border-radius:50% 50% 0 0/100% 100% 0 0}
+
+/* bouton d'achat */
+.btn{position:relative;display:flex;align-items:center;justify-content:center;gap:10px;width:100%;border:0;cursor:pointer;font-family:var(--display);font-weight:800;font-size:1.15rem;padding:16px 20px;border-radius:18px;text-decoration:none;color:var(--night);
+  background:linear-gradient(180deg,#F4D79D,var(--gold) 55%,#C99A4A);box-shadow:0 1px 0 rgba(255,255,255,.6) inset,0 12px 28px rgba(226,184,107,.38);transition:transform .15s,box-shadow .15s;overflow:hidden}
+.btn::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.55) 50%,transparent 65%);transform:translateX(120%);animation:shine 3.2s ease-in-out infinite}
+@keyframes shine{0%,55%{transform:translateX(120%)}100%{transform:translateX(-120%)}}
+.btn:hover{box-shadow:0 1px 0 rgba(255,255,255,.6) inset,0 16px 34px rgba(226,184,107,.55)}
+.btn:active{transform:scale(.98)}
+.btn svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.cta-block{display:grid;gap:8px;text-align:center}
+.cta-block small{font-size:.86rem;color:var(--ink-soft)}
+.dark .cta-block small{color:#C9D0DF}
+
+/* sections */
+section{padding-block:64px}
+section .wrap{display:grid;gap:24px}
+.head{display:grid;gap:10px}
+.eyebrow{font-size:.9rem;font-weight:600;color:var(--gold-deep);display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:24px;height:2px;background:var(--gold);border-radius:2px}
+.sub{color:var(--ink-soft);font-size:1.02rem}
+.alt{background:var(--paper)}
+
+/* bénéfices */
+.benefits{display:grid;grid-template-columns:1fr 1fr;gap:14px;perspective:900px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:20px 16px;display:grid;gap:10px;align-content:start;min-width:0;box-shadow:0 14px 30px -20px rgba(12,21,38,.25);transform-style:preserve-3d;transition:transform .25s}
+.card .ic{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(145deg,#FBE9E2,var(--rose));transform:translateZ(24px)}
+.card .ic svg{width:24px;height:24px;stroke:var(--night);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.card p{font-size:.94rem;color:var(--ink-soft);line-height:1.8}
+
+/* avant / après */
+.ba{position:relative;border-radius:26px;overflow:hidden;aspect-ratio:4/5;max-width:100%;background:var(--rose);box-shadow:0 30px 60px -30px rgba(12,21,38,.45);user-select:none;touch-action:pan-y}
+.ba canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+#baBefore{clip-path:inset(0 0 0 var(--pos,50%))}
+.ba .handle{position:absolute;top:0;bottom:0;left:var(--pos,50%);width:3px;margin-left:-1.5px;background:#fff;box-shadow:0 0 12px rgba(0,0,0,.25);pointer-events:none}
+.ba .handle::after{content:"";position:absolute;top:50%;left:50%;width:46px;height:46px;transform:translate(-50%,-50%);border-radius:50%;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230C1526' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 6l-6 6 6 6M15 6l6 6-6 6'/%3E%3C/svg%3E") center/22px no-repeat;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+.ba .tag{position:absolute;top:14px;padding:4px 14px;border-radius:999px;font-family:var(--display);font-weight:700;font-size:.9rem;pointer-events:none}
+.ba .t-before{right:14px;background:rgba(12,21,38,.75);color:#fff}
+.ba .t-after{left:14px;background:var(--gold);color:var(--night)}
+.ba input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.ba-note{font-size:.84rem;color:var(--ink-soft);text-align:center;line-height:1.7}
+.zones{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.zone{background:var(--pearl);border:1px solid var(--line);border-radius:16px;padding:12px 6px;text-align:center;font-size:.9rem;font-weight:500;min-width:0}
+.zone b{display:block;font-family:var(--display);color:var(--gold-deep);font-size:1rem}
+
+/* commande */
+#commande{scroll-margin-top:10px;background:linear-gradient(180deg,var(--pearl),#F6ECE6)}
+.order{position:relative;background:var(--paper);border-radius:28px;padding:28px 20px;display:grid;gap:16px;box-shadow:0 30px 60px -30px rgba(12,21,38,.4),0 0 0 1px var(--line)}
+.order::before{content:"";position:absolute;inset:0 18% auto;height:4px;border-radius:0 0 6px 6px;background:linear-gradient(90deg,var(--rose-glow),var(--gold))}
+.order-head{text-align:center;display:grid;gap:6px}
+.order-head p{color:var(--ink-soft);font-size:.98rem}
+.mini{display:flex;align-items:center;gap:14px;background:var(--pearl);border-radius:16px;padding:12px 14px}
+.mini .pic{width:54px;height:54px;border-radius:12px;background:var(--night);display:grid;place-items:center;flex:none}
+.mini .pic i{display:block;width:26px;height:30px;border-radius:4px 4px 8px 8px;background:linear-gradient(90deg,#e8ddd5,#fff 45%,#eadfd6);box-shadow:0 -7px 0 -1px var(--gold)}
+.mini b{display:block;line-height:1.5}
+.mini span{font-size:.88rem;color:var(--ink-soft)}
+.field{display:grid;gap:6px}
+.field label{font-weight:600;font-size:.98rem}
+.field input{width:100%;font:inherit;font-size:1.02rem;padding:14px 16px;border:1.5px solid var(--line);border-radius:14px;background:var(--pearl);color:var(--ink);transition:border-color .15s,background .15s}
+.field input:focus{outline:none;border-color:var(--gold);background:#fff;box-shadow:0 0 0 4px rgba(226,184,107,.18)}
+.field input[dir="ltr"]{text-align:right}
+.field .hint{font-size:.84rem;color:var(--err);min-height:1.1em;line-height:1.4}
+.field.bad input{border-color:var(--err)}
+.qty{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.stepper{display:flex;align-items:center;gap:4px;background:var(--pearl);border-radius:14px;padding:4px}
+.stepper button{width:44px;height:44px;border-radius:11px;border:0;background:#fff;font-size:1.3rem;font-weight:700;color:var(--ink);cursor:pointer;box-shadow:0 2px 6px rgba(12,21,38,.08)}
+.stepper output{min-width:40px;text-align:center;font-weight:700;font-size:1.2rem;font-variant-numeric:tabular-nums}
+.total{display:flex;justify-content:space-between;align-items:center;background:var(--night);color:#fff;border-radius:16px;padding:12px 18px;font-weight:600}
+.total .sum{font-family:var(--display);font-size:1.7rem;font-weight:800;color:var(--gold);font-variant-numeric:tabular-nums}
+.cod-line{display:flex;gap:8px;align-items:center;justify-content:center;font-size:.92rem;color:var(--ok);font-weight:600}
+.cod-line svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2.4}
+.done{text-align:center;display:grid;gap:14px;padding:34px 20px}
+.done .check{width:72px;height:72px;border-radius:50%;background:var(--ok);margin:0 auto;display:grid;place-items:center;box-shadow:0 0 0 10px rgba(30,142,94,.12)}
+.done .check svg{width:34px;height:34px;stroke:#fff;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+
+/* section sombre émotion */
+.dark{background:var(--night);color:#fff}
+.dark .sub{color:#D3D9E5}
+.dark .eyebrow{color:var(--gold)}
+.imagine{font-family:var(--display);font-size:clamp(1.3rem,5vw,1.6rem);font-weight:700;line-height:1.7;color:#fff}
+.imagine span{color:var(--gold)}
+.causes{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cause{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:14px;font-weight:500;font-size:.98rem;min-width:0}
+.cause span{font-size:1.4rem}
+
+/* étapes */
+.steps{list-style:none;margin:0;padding:0;display:grid;counter-reset:s}
+.steps li{counter-increment:s;position:relative;display:grid;grid-template-columns:50px 1fr;gap:16px;padding-bottom:28px}
+.steps li:not(:last-child)::after{content:"";position:absolute;inset-inline-start:24px;top:50px;bottom:0;width:2px;background:linear-gradient(var(--gold),transparent)}
+.steps li::before{content:counter(s);width:50px;height:50px;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:1.2rem;color:var(--night);background:linear-gradient(180deg,#F4D79D,var(--gold));box-shadow:0 8px 18px -6px rgba(184,138,59,.6)}
+.steps b{display:block;font-family:var(--display);font-size:1.08rem;font-weight:700}
+.steps span{color:var(--ink-soft);font-size:.98rem}
+.tip{display:flex;gap:12px;align-items:flex-start;background:linear-gradient(135deg,#FFF4E2,#FCE9E2);border-radius:18px;padding:16px 18px;font-size:.98rem}
+.tip svg{flex:none;width:26px;height:26px;stroke:var(--gold-deep);fill:none;stroke-width:1.8;margin-top:4px}
+
+/* atouts */
+.checks{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.checks li{display:flex;gap:12px;align-items:center;background:var(--pearl);border-radius:16px;padding:14px 16px;font-weight:500}
+.checks li::before{content:"";flex:none;width:28px;height:28px;border-radius:50%;background:var(--ok) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E") center/15px no-repeat}
+
+/* confiance */
+.trust{display:grid;gap:12px}
+.trust div{display:grid;grid-template-columns:46px 1fr;gap:14px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:16px}
+.trust .ti{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:var(--night)}
+.trust .ti svg{width:22px;height:22px;stroke:var(--gold);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.trust b{display:block;line-height:1.5}
+.trust span{font-size:.92rem;color:var(--ink-soft);line-height:1.7;display:block}
+
+/* FAQ */
+.faq{display:grid;gap:12px}
+.faq details{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:2px 18px}
+.faq details[open]{box-shadow:0 14px 30px -20px rgba(12,21,38,.3)}
+.faq summary{cursor:pointer;font-weight:600;padding:16px 0;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;line-height:1.6}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";flex:none;width:28px;height:28px;border-radius:50%;background:var(--pearl) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23A87A2C' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M12 6v12M6 12h12'/%3E%3C/svg%3E") center/14px no-repeat;transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding-bottom:16px;color:var(--ink-soft);font-size:.98rem}
+
+footer{background:var(--night);color:#B3BBCC;font-size:.84rem;line-height:1.9}
+footer .wrap{padding-block:30px;display:grid;gap:10px}
+footer b{color:var(--gold)}
+
+/* barre d'achat toujours visible */
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:20;background:rgba(12,21,38,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid rgba(226,184,107,.35);padding-top:10px;padding-bottom:calc(10px + env(safe-area-inset-bottom,0px));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.sticky .in{max-width:560px;margin:0 auto;display:flex;gap:14px;align-items:center}
+.sticky .p{color:#fff;font-family:var(--display);font-weight:800;font-size:1.35rem;line-height:1.2;white-space:nowrap}
+.sticky .p small{display:block;font-family:var(--body);font-size:.74rem;color:var(--gold);font-weight:600}
+.sticky .btn{padding:13px 16px;font-size:1.05rem}
+.photo-stage{position:relative;height:clamp(360px,100vw,470px);display:grid;place-items:center;perspective:1100px;margin-inline:-20px}
+.photo-card{position:relative;height:min(86vw,390px);border-radius:28px;overflow:hidden;background:#fff;transform-style:preserve-3d;
+  box-shadow:0 46px 80px -34px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.14);animation:sway 7s ease-in-out infinite;transition:transform .2s ease-out}
+.photo-card canvas{display:block;height:100%;width:auto;max-width:none;opacity:0;transition:opacity .5s}
+.photo-card.ready canvas,.pic.ready canvas{opacity:1}
+.pic canvas{width:100%;height:100%;object-fit:cover;object-position:top;opacity:0;transition:opacity .5s}
+.photo-card::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.35) 48%,transparent 62%);background-size:250% 100%;animation:gloss 5s ease-in-out infinite;pointer-events:none}
+.photo-card.live{animation:none}
+.photo-floor{position:absolute;bottom:6%;left:50%;width:min(70vw,300px);height:34px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.45),transparent);filter:blur(4px)}
+@keyframes sway{0%,100%{transform:rotateY(-12deg) rotateX(5deg) translateY(0)}50%{transform:rotateY(12deg) rotateX(-3deg) translateY(-10px)}}
+@keyframes gloss{0%,40%{background-position:120% 0}100%{background-position:-60% 0}}
+.photo-badge{position:absolute;z-index:3;top:8%;inset-inline-end:22px;background:#fff;color:#111;border-radius:999px;padding:6px 14px;font-weight:700;font-size:.82rem;box-shadow:0 10px 24px -10px rgba(0,0,0,.5)}
+.mini .pic{background:#fff!important;overflow:hidden}
+.mini .pic img{width:100%;height:100%;object-fit:cover}
+</style>
+
+<div dir="rtl" lang="ar">
+
+<div class="topbar"><div class="wrap">
+  <span>الدفع عند الاستلام</span><span>•</span><span>توصيل إلى جميع مدن المغرب</span>
+</div></div>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="wrap">
+    <span class="badge"><i></i>روتين بسيط لبشرة أكثر صفاءً</span>
+    <h1>ودّعي مظهر البقع الداكنة <span>واستعيدي إشراقة بشرتك</span></h1>
+    <p class="lead">كريم مخصّص للكلف والبقع الداكنة، يساعد على تقليل مظهرها وتوحيد لون البشرة مع الاستعمال المنتظم.</p>
+
+    <div class="photo-stage" id="stage">
+      <div class="ring"></div><div class="ring r2"></div>
+      <div class="photo-floor"></div>
+      <div class="photo-card" id="photoCard"><canvas data-photo="hero" role="img" aria-label="كريم ضد الكلف" style="aspect-ratio:580 / 580"></canvas></div>
+      <div class="float-tag ft1"><b>تركيبة خفيفة</b>تُمتصّ بسرعة</div>
+      <div class="float-tag ft2"><b>صباحاً ومساءً</b>للاستعمال اليومي</div>
+    </div>
+
+    <div class="price-card">
+      <div class="price">170 <small>درهم</small></div>
+      <p><b>لا تدفعين أي شيء مسبقاً</b><br>الدفع نقداً عند استلام طلبك</p>
+    </div>
+    <a class="btn" href="#commande"><svg viewBox="0 0 24 24"><path d="M6 6h15l-2 9H8L6 3H3"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg>اشتري الآن</a>
+
+    <div class="chips">
+      <div class="chip"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/></svg>الدفع عند الاستلام</div>
+      <div class="chip"><svg viewBox="0 0 24 24"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="17.5" r="1.5"/><circle cx="17" cy="17.5" r="1.5"/></svg>توصيل لجميع المدن</div>
+      <div class="chip"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>صُنع في المغرب</div>
+    </div>
+  </div>
+  <div class="hero-curve"></div>
+</header>
+
+<!-- ===== BÉNÉFICES ===== -->
+<section><div class="wrap">
+  <div class="head">
+    <span class="eyebrow">لماذا ستحبّينه؟</span>
+    <h2>أربع فوائد في علبة واحدة</h2>
+    <p class="sub">كل ما تحتاجه بشرتك لتبدو أكثر توحّداً وإشراقاً، في خطوة واحدة صباحاً ومساءً.</p>
+  </div>
+  <div class="benefits">
+    <div class="card"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M5 19l1.5-1.5M17.5 6.5L19 5"/></svg></span><h3>يقلّل مظهر البقع</h3><p>يساعد على تخفيف مظهر الكلف والبقع الداكنة.</p></div>
+    <div class="card"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 010 16"/></svg></span><h3>لون متجانس</h3><p>يمنح البشرة مظهراً موحّداً وأكثر صفاءً.</p></div>
+    <div class="card"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 3c3 4 6 7 6 11a6 6 0 01-12 0c0-4 3-7 6-11z"/></svg></span><h3>ترطيب ونعومة</h3><p>تركيبة خفيفة تُمتصّ بسرعة دون ملمس دهني.</p></div>
+    <div class="card"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><h3>دقيقة واحدة</h3><p>يندمج بسهولة في روتينك اليومي.</p></div>
+  </div>
+  <div class="cta-block">
+    <a class="btn" href="#commande"><svg viewBox="0 0 24 24"><path d="M6 6h15l-2 9H8L6 3H3"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg>اطلبي علبتك الآن</a>
+    <small>الدفع عند الاستلام • بدون أي دفع مسبق</small>
+  </div>
+</div></section>
+
+<!-- ===== AVANT / APRÈS ===== -->
+<section class="alt"><div class="wrap">
+  <div class="head">
+    <span class="eyebrow">قبل وبعد</span>
+    <h2>اكتشفي الفرق بنفسك</h2>
+    <p class="sub">حرّكي الخط يميناً ويساراً لتري كيف يمكن أن تبدو البشرة مع الانتظام في الاستعمال.</p>
+  </div>
+  <div class="ba" id="ba">
+    <canvas id="baAfter"></canvas>
+    <canvas id="baBefore"></canvas>
+    <div class="handle"></div>
+    <span class="tag t-before">قبل</span>
+    <span class="tag t-after">بعد</span>
+    <input type="range" id="baRange" min="0" max="100" value="50" dir="ltr" aria-label="مقارنة قبل وبعد">
+  </div>
+  <p class="ba-note">صورة توضيحية. تختلف النتائج من شخص لآخر حسب نوع البشرة والبقع ومدى الانتظام في الاستعمال.</p>
+  <div class="zones">
+    <div class="zone"><b>الجبهة</b>بقع الشمس</div>
+    <div class="zone"><b>الخدّان</b>كلف الحمل</div>
+    <div class="zone"><b>فوق الشفة</b>تصبّغات</div>
+  </div>
+  <div class="cta-block">
+    <a class="btn" href="#commande"><svg viewBox="0 0 24 24"><path d="M6 6h15l-2 9H8L6 3H3"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg>أريد هذه النتيجة، اطلبي الآن</a>
+  </div>
+</div></section>
+
+<!-- ===== COMMANDE ===== -->
+<section id="commande"><div class="wrap">
+  <form class="order" id="orderForm" novalidate>
+    <div class="order-head">
+      <h2>اطلبي كريمك الآن</h2>
+      <p>املئي المعلومات وسيتصل بك فريقنا لتأكيد الطلب</p>
+    </div>
+    <div class="mini"><span class="pic"><canvas data-photo="mini" aria-hidden="true"></canvas></span><div><b>كريم ضد الكلف</b><span>170 درهم للعلبة</span></div></div>
+
+    <div class="field" id="f-name">
+      <label for="name">الاسم الكامل</label>
+      <input id="name" name="name" autocomplete="name" placeholder="مثال: فاطمة الزهراء" required>
+      <span class="hint" aria-live="polite"></span>
+    </div>
+    <div class="field" id="f-phone">
+      <label for="phone">رقم الهاتف</label>
+      <input id="phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel" dir="ltr" placeholder="06XXXXXXXX" maxlength="14" required>
+      <span class="hint" aria-live="polite"></span>
+    </div>
+    <div class="field" id="f-city">
+      <label for="city">المدينة</label>
+      <input id="city" name="city" autocomplete="address-level2" placeholder="مثال: الدار البيضاء" required>
+      <span class="hint" aria-live="polite"></span>
+    </div>
+    <div class="field" id="f-address">
+      <label for="address">العنوان الكامل (الحي والشارع والرقم)</label>
+      <input id="address" name="address" autocomplete="street-address" placeholder="مثال: حي السلام، شارع 12، رقم 5" required>
+      <span class="hint" aria-live="polite"></span>
+    </div>
+
+    <div class="total"><span>المجموع</span><span class="sum">170 درهم</span></div>
+
+    <button class="btn" type="submit" id="submitBtn"><svg viewBox="0 0 24 24"><path d="M6 6h15l-2 9H8L6 3H3"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg>اشتري الآن</button>
+    <p class="cod-line"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/></svg>الدفع عند الاستلام، دون أي دفع مسبق</p>
+  </form>
+
+  <div class="order done" id="thanks" hidden>
+    <span class="check"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg></span>
+    <h2>شكراً لك! تمّ استلام طلبك</h2>
+    <p class="sub">سيتصل بك فريقنا قريباً على الرقم <b id="thanksPhone" dir="ltr"></b> لتأكيد الطلب وموعد التوصيل. يرجى إبقاء هاتفك قريباً منك.</p>
+  </div>
+</div></section>
+
+<!-- ===== ÉMOTION + CAUSES ===== -->
+<section class="dark"><div class="wrap">
+  <p class="imagine">تخيّلي صباحاً تنظرين فيه إلى المرآة <span>وتلاحظين بشرة أكثر صفاءً وتوحّداً</span>، وتخرجين بثقة أكبر.</p>
+  <div class="head">
+    <span class="eyebrow">لماذا يظهر الكلف؟</span>
+    <p class="sub">الكلف أمر شائع لدى كثير من النساء، ويظهر غالباً على الجبهة والخدّين وفوق الشفة. ومن أبرز العوامل التي تزيد من ظهوره:</p>
+  </div>
+  <div class="causes">
+    <div class="cause"><span>☀️</span>أشعة الشمس</div>
+    <div class="cause"><span>🤰</span>الحمل والولادة</div>
+    <div class="cause"><span>🔄</span>التغيّرات الهرمونية</div>
+    <div class="cause"><span>💊</span>بعض الأدوية</div>
+  </div>
+  <p class="sub">الخبر الجيّد: روتين بسيط ومنتظم، مع الحماية من الشمس، يساعدك على العناية ببشرتك خطوة بخطوة.</p>
+  <div class="cta-block">
+    <a class="btn" href="#commande"><svg viewBox="0 0 24 24"><path d="M6 6h15l-2 9H8L6 3H3"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg>ابدئي روتينك اليوم</a>
+    <small>170 درهم فقط • الدفع عند الاستلام</small>
+  </div>
+</div></section>
+
+<!-- ===== ROUTINE ===== -->
+<section><div class="wrap">
+  <div class="head">
+    <span class="eyebrow">طريقة الاستعمال</span>
+    <h2>ثلاث خطوات، دقيقة واحدة في اليوم</h2>
+  </div>
+  <ol class="steps">
+    <li><div><b>نظّفي وجهك</b><span>اغسلي وجهك بغسول لطيف وجفّفيه جيداً.</span></div></li>
+    <li><div><b>ضعي كمية صغيرة</b><span>وزّعي الكريم على البقع بحركات دائرية خفيفة حتى يُمتصّ.</span></div></li>
+    <li><div><b>واظبي على الاستعمال</b><span>كرّري ذلك صباحاً ومساءً كل يوم للحصول على أفضل استفادة.</span></div></li>
+  </ol>
+  <div class="tip"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M5 19l1.5-1.5M17.5 6.5L19 5"/></svg><p><b>نصيحة مهمّة:</b> الشمس من أكبر أسباب الكلف، لذا استعملي واقياً شمسياً كل صباح فوق الكريم.</p></div>
+</div></section>
+
+<!-- ===== ATOUTS ===== -->
+<section class="alt"><div class="wrap">
+  <div class="head">
+    <span class="eyebrow">ما الذي يميّزه؟</span>
+    <h2>كل ما تبحثين عنه في كريم واحد</h2>
+  </div>
+  <ul class="checks">
+    <li>تركيبة خفيفة وغير دهنية</li>
+    <li>مناسب لروتين الصباح والمساء</li>
+    <li>مصنوع في المغرب داخل مختبر معتمد</li>
+    <li>علبة عملية تكفيك لاستعمال منتظم</li>
+    <li>الدفع عند الاستلام ومكالمة تأكيد قبل الإرسال</li>
+  </ul>
+  <div class="cta-block">
+    <a class="btn" href="#commande"><svg viewBox="0 0 24 24"><path d="M6 6h15l-2 9H8L6 3H3"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg>اشتري الآن — 170 درهم</a>
+  </div>
+</div></section>
+
+<!-- ===== CONFIANCE ===== -->
+<section><div class="wrap">
+  <div class="head">
+    <span class="eyebrow">طلبك في أمان</span>
+    <h2>من لحظة الطلب حتى باب منزلك</h2>
+  </div>
+  <div class="trust">
+    <div><span class="ti"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/></svg></span><p><b>ادفعي عند الاستلام</b><span>لا دفع مسبق، تدفعين نقداً عند وصول الطلب.</span></p></div>
+    <div><span class="ti"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8 9.8a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c.9.3 1.8.6 2.7.7a2 2 0 011.7 2z"/></svg></span><p><b>مكالمة تأكيد</b><span>يتصل بك فريقنا لتأكيد الطلب والعنوان قبل الإرسال.</span></p></div>
+    <div><span class="ti"><svg viewBox="0 0 24 24"><path d="M9 3h6M10 3v6L4 19a1.5 1.5 0 001.3 2h13.4a1.5 1.5 0 001.3-2L14 9V3"/></svg></span><p><b>مختبر معتمد</b><span>منتج مصنوع في المغرب داخل مختبر معتمد.</span></p></div>
+    <div><span class="ti"><svg viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg></span><p><b>بياناتك في أمان</b><span>نستعمل معلوماتك فقط لتوصيل طلبك.</span></p></div>
+  </div>
+</div></section>
+
+<!-- ===== FAQ ===== -->
+<section class="alt"><div class="wrap">
+  <div class="head">
+    <span class="eyebrow">أسئلة شائعة</span>
+    <h2>لديك سؤال؟</h2>
+  </div>
+  <div class="faq">
+    <details><summary>هل يجب أن أدفع قبل وصول الطلب؟</summary><p>لا، الدفع يكون نقداً عند استلام الطلب أمام باب منزلك.</p></details>
+    <details><summary>متى ألاحظ النتيجة؟</summary><p>تختلف النتائج من شخص لآخر حسب نوع البشرة والبقع. الأهمّ هو الانتظام في الاستعمال صباحاً ومساءً، مع واقي الشمس نهاراً.</p></details>
+    <details><summary>هل يناسب البشرة الحساسة؟</summary><p>قبل أول استعمال، جرّبي كمية صغيرة على منطقة صغيرة من الجلد (خلف الأذن مثلاً) وانتظري 24 ساعة. إذا ظهر احمرار أو حكّة، توقّفي عن الاستعمال.</p></details>
+    <details><summary>هل يمكن استعماله أثناء الحمل أو الرضاعة؟</summary><p>في هذه الفترة، يُفضَّل استشارة طبيبك قبل استعمال أي منتج جديد للعناية بالبشرة.</p></details>
+    <details><summary>كيف يتمّ التوصيل؟</summary><p>بعد ملء الاستمارة، يتصل بك فريقنا لتأكيد الطلب والعنوان، ثم يصلك الطلب إلى باب منزلك.</p></details>
+  </div>
+  <div class="cta-block">
+    <a class="btn" href="#commande"><svg viewBox="0 0 24 24"><path d="M6 6h15l-2 9H8L6 3H3"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg>اشتري الآن — 170 درهم</a>
+    <small>الدفع عند الاستلام • توصيل إلى جميع المدن</small>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <p><b>تنبيه:</b> هذا المنتج مستحضر تجميلي للعناية بالبشرة وليس دواءً، ولا يُغني عن استشارة الطبيب. تختلف النتائج من شخص لآخر. صور «قبل وبعد» توضيحية.</p>
+  <p>هذا الموقع غير تابع لفيسبوك أو ميتا وغير مدعوم من طرفهما.</p>
+  <p>تُستعمل بياناتك فقط لتأكيد طلبك وتوصيله.</p>
+</div></footer>
+
+<div class="sticky"><div class="in">
+  <span class="p">170 درهم<small>الدفع عند الاستلام</small></span>
+  <a class="btn" href="#commande"><svg viewBox="0 0 24 24"><path d="M6 6h15l-2 9H8L6 3H3"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg>اشتري الآن</a>
+</div></div>
+
+</div>
+
+<script>
+/* ===== CONFIG — à remplir avant la mise en ligne =====
+   ORDER_ENDPOINT : URL qui reçoit les commandes (Google Apps Script → Google Sheet,
+   ou l'intégration fournie par Marque Online). Vide = mode démo. */
+const ORDER_ENDPOINT = "https://marqueonline.ma/api/order/landing-page";
+const PRODUCT = { slug: "50ml-creme-contre-le-melasma", affRef: "7644", price: 170 };
+const $ = id => document.getElementById(id);
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+const PHOTO = {"src":"https://marqueonline.ma/OLD/public/products_images/6a68d1456ae79/_1785254213.jpeg","crop":[220,330,800,910]};
+
+/* ===== Photo produit (servie par Marque Online, rendue en canvas) ===== */
+function drawPhoto(cv, P, cssH){
+  const img = new Image(); img.decoding = "async";
+  img.onload = () => {
+    const [x0, y0, x1, y1] = P.crop, w = x1 - x0, h = y1 - y0;
+    const scale = Math.min(2.5, (cssH * Math.min(devicePixelRatio || 1, 2)) / h) || 1;
+    cv.width = Math.round(w * scale); cv.height = Math.round(h * scale);
+    cv.style.aspectRatio = w + " / " + h;
+    const c = cv.getContext("2d"); c.imageSmoothingQuality = "high";
+    c.filter = "contrast(1.05) saturate(1.07)";
+    c.drawImage(img, x0, y0, w, h, 0, 0, cv.width, cv.height);
+    c.filter = "none";
+    if (P.patch) { /* efface un élément gênant en recopiant le fond du côté opposé */
+      const [pw, ph, fx, fy] = P.patch, t = document.createElement("canvas");
+      t.width = Math.round(pw * scale); t.height = Math.round(ph * scale);
+      const tc = t.getContext("2d");
+      tc.translate(t.width, 0); tc.scale(-1, 1);
+      tc.filter = "contrast(1.05) saturate(1.07)";
+      tc.drawImage(img, x1 - pw, y0, pw, ph, 0, 0, t.width, t.height);
+      tc.setTransform(1, 0, 0, 1, 0, 0); tc.filter = "none";
+      tc.globalCompositeOperation = "destination-in";
+      const gx = tc.createLinearGradient(0, 0, t.width, 0); gx.addColorStop(fx, "#000"); gx.addColorStop(1, "rgba(0,0,0,0)");
+      tc.fillStyle = gx; tc.fillRect(0, 0, t.width, t.height);
+      const gy = tc.createLinearGradient(0, 0, 0, t.height); gy.addColorStop(fy, "#000"); gy.addColorStop(1, "rgba(0,0,0,0)");
+      tc.fillStyle = gy; tc.fillRect(0, 0, t.width, t.height);
+      c.drawImage(t, 0, 0);
+    }
+    cv.closest(".photo-card, .pic")?.classList.add("ready");
+  };
+  img.src = P.src;
+}
+document.querySelectorAll("canvas[data-photo]").forEach(cv => drawPhoto(cv, PHOTO, cv.dataset.photo === "mini" ? 54 : 420));
+
+(function(){
+  const card = $("photoCard"), stage = $("stage"); if (!card || reduce) return;
+  let t;
+  stage.addEventListener("pointermove", e => { const r = stage.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+    card.classList.add("live"); card.style.transform = `rotateY(${x * 22}deg) rotateX(${-y * 16}deg) translateY(-6px)`;
+    clearTimeout(t); t = setTimeout(() => { card.style.transform = ""; card.classList.remove("live"); }, 1600); });
+})();
+
+/* ===== Avant / Après (illustration) ===== */
+(function(){
+  const box = $("ba"), cb = $("baBefore"), ca = $("baAfter"), range = $("baRange");
+  function draw(cv, before){
+    const r = box.getBoundingClientRect(), dpr = Math.min(devicePixelRatio, 2);
+    const W = Math.round(r.width), H = Math.round(r.height);
+    cv.width = W * dpr; cv.height = H * dpr;
+    const c = cv.getContext("2d"); c.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const u = W / 400; /* unité */
+    /* fond */
+    const bg = c.createLinearGradient(0, 0, 0, H); bg.addColorStop(0, "#F8E4DB"); bg.addColorStop(1, "#EBC9BB");
+    c.fillStyle = bg; c.fillRect(0, 0, W, H);
+    const cx = W / 2, cy = H * .5;
+    /* cheveux arrière */
+    c.fillStyle = "#3A2418";
+    c.beginPath(); c.ellipse(cx, cy - 40*u, 165*u, 205*u, 0, 0, Math.PI * 2); c.fill();
+    c.fillRect(cx - 165*u, cy - 40*u, 330*u, 260*u);
+    /* cou */
+    const skin = before ? ["#E5B595","#D9A283","#C98E70"] : ["#F1C8AC","#E9B898","#DBA585"];
+    c.fillStyle = skin[2]; c.fillRect(cx - 52*u, cy + 120*u, 104*u, 140*u);
+    c.beginPath(); c.ellipse(cx, H + 40*u, 190*u, 110*u, 0, 0, Math.PI * 2); c.fill();
+    /* visage */
+    const fg = c.createRadialGradient(cx - 30*u, cy - 50*u, 20*u, cx, cy, 170*u);
+    fg.addColorStop(0, skin[0]); fg.addColorStop(.7, skin[1]); fg.addColorStop(1, skin[2]);
+    c.fillStyle = fg; c.beginPath(); c.ellipse(cx, cy, 118*u, 150*u, 0, 0, Math.PI * 2); c.fill();
+    /* frange */
+    c.fillStyle = "#3A2418";
+    c.beginPath(); c.moveTo(cx - 125*u, cy - 20*u);
+    c.quadraticCurveTo(cx - 120*u, cy - 175*u, cx, cy - 165*u);
+    c.quadraticCurveTo(cx + 125*u, cy - 170*u, cx + 125*u, cy - 10*u);
+    c.quadraticCurveTo(cx + 70*u, cy - 120*u, cx - 20*u, cy - 125*u);
+    c.quadraticCurveTo(cx - 95*u, cy - 120*u, cx - 125*u, cy - 20*u); c.fill();
+    /* taches (mélasma) */
+    c.save(); c.filter = `blur(${7*u}px)`;
+    const a = before ? .5 : .08;
+    const spots = [[-58,25,32,20],[-70,45,22,16],[60,22,30,22],[72,48,20,14],[-15,-85,40,14],[22,-80,26,12],[0,88,30,9],[-40,5,14,10],[45,0,12,9]];
+    for (const [x, y, rx, ry] of spots) { c.fillStyle = `rgba(122,72,45,${a})`; c.beginPath(); c.ellipse(cx + x*u, cy + y*u, rx*u, ry*u, 0, 0, Math.PI * 2); c.fill(); }
+    c.restore();
+    if (!before) { /* éclat */
+      c.save(); c.filter = `blur(${18*u}px)`; c.fillStyle = "rgba(255,240,228,.55)";
+      c.beginPath(); c.ellipse(cx - 40*u, cy - 30*u, 50*u, 40*u, 0, 0, Math.PI * 2); c.fill();
+      c.beginPath(); c.ellipse(cx + 45*u, cy + 10*u, 40*u, 32*u, 0, 0, Math.PI * 2); c.fill(); c.restore();
+    }
+    /* sourcils, yeux fermés, nez, lèvres */
+    c.strokeStyle = "#3A2418"; c.lineCap = "round";
+    c.lineWidth = 6*u;
+    c.beginPath(); c.moveTo(cx - 75*u, cy - 42*u); c.quadraticCurveTo(cx - 48*u, cy - 56*u, cx - 20*u, cy - 46*u); c.stroke();
+    c.beginPath(); c.moveTo(cx + 75*u, cy - 42*u); c.quadraticCurveTo(cx + 48*u, cy - 56*u, cx + 20*u, cy - 46*u); c.stroke();
+    c.lineWidth = 4*u;
+    c.beginPath(); c.moveTo(cx - 70*u, cy - 14*u); c.quadraticCurveTo(cx - 48*u, cy - 2*u, cx - 26*u, cy - 14*u); c.stroke();
+    c.beginPath(); c.moveTo(cx + 70*u, cy - 14*u); c.quadraticCurveTo(cx + 48*u, cy - 2*u, cx + 26*u, cy - 14*u); c.stroke();
+    c.strokeStyle = "rgba(150,90,65,.6)"; c.lineWidth = 3*u;
+    c.beginPath(); c.moveTo(cx + 2*u, cy - 6*u); c.quadraticCurveTo(cx + 12*u, cy + 40*u, cx - 6*u, cy + 48*u); c.stroke();
+    c.fillStyle = "#C46A62";
+    c.beginPath(); c.moveTo(cx - 30*u, cy + 82*u); c.quadraticCurveTo(cx, cy + 70*u, cx + 30*u, cy + 82*u); c.quadraticCurveTo(cx, cy + 104*u, cx - 30*u, cy + 82*u); c.fill();
+    /* joues */
+    c.save(); c.filter = `blur(${12*u}px)`; c.fillStyle = before ? "rgba(214,120,110,.12)" : "rgba(232,130,120,.25)";
+    c.beginPath(); c.ellipse(cx - 62*u, cy + 40*u, 30*u, 20*u, 0, 0, Math.PI * 2); c.fill();
+    c.beginPath(); c.ellipse(cx + 62*u, cy + 40*u, 30*u, 20*u, 0, 0, Math.PI * 2); c.fill(); c.restore();
+  }
+  function paint(){ draw(cb, true); draw(ca, false); }
+  function setPos(v){ box.style.setProperty("--pos", v + "%"); }
+  range.addEventListener("input", () => setPos(range.value));
+  paint(); setPos(50);
+  let rt; addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(paint, 150); });
+  /* petite démonstration automatique au premier affichage */
+  if (!reduce) {
+    let shown = false;
+    new IntersectionObserver(([en]) => {
+      if (!en.isIntersecting || shown) return; shown = true;
+      const seq = [50, 25, 75, 50]; let i = 0;
+      const step = () => { if (i >= seq.length) return; range.value = seq[i]; box.querySelector(".handle").style.transition = "left .6s"; cb.style.transition = "clip-path .6s"; setPos(seq[i++]); setTimeout(step, 650); };
+      setTimeout(step, 300);
+      setTimeout(() => { box.querySelector(".handle").style.transition = ""; cb.style.transition = ""; }, 3200);
+    }, { threshold: .5 }).observe(box);
+  }
+})();
+
+/* ===== cartes 3D inclinables ===== */
+if (matchMedia("(hover:hover) and (pointer:fine)").matches) {
+  document.querySelectorAll(".card").forEach(c => {
+    c.addEventListener("pointermove", e => { const r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5; c.style.transform = `rotateY(${x * 14}deg) rotateX(${-y * 14}deg)`; });
+    c.addEventListener("pointerleave", () => { c.style.transform = ""; });
+  });
+}
+
+/* ===== formulaire ===== */
+function normPhone(v){ let d = v.replace(/\D/g, ""); if (d.startsWith("212")) d = "0" + d.slice(3); return d; }
+function setErr(id, msg){ const f = $(id); f.classList.toggle("bad", !!msg); f.querySelector(".hint").textContent = msg || ""; }
+$("orderForm").addEventListener("submit", async e => {
+  e.preventDefault();
+  const name = $("name").value.trim(), phone = normPhone($("phone").value), city = $("city").value.trim();
+  let ok = true;
+  setErr("f-name", name.length >= 3 ? "" : (ok = false, "يرجى كتابة الاسم الكامل"));
+  setErr("f-phone", /^0[5-7]\d{8}$/.test(phone) ? "" : (ok = false, "يجب أن يتكوّن الرقم من 10 أرقام ويبدأ بـ 06 أو 07"));
+  setErr("f-city", city.length >= 2 ? "" : (ok = false, "يرجى كتابة المدينة"));
+  const address = $("address").value.trim();
+  setErr("f-address", address.length >= 5 ? "" : (ok = false, "يرجى كتابة العنوان الكامل"));
+  if (!ok) { document.querySelector(".field.bad input").focus(); return; }
+  const btn = $("submitBtn"); btn.disabled = true; btn.textContent = "جارٍ الإرسال…";
+  /* envoi direct vers Marque Online : la commande s'enregistre dans le compte affilié 7644 */
+  const fd = new FormData();
+  fd.append("Nom", name); fd.append("Téléphone", phone); fd.append("Ville", city); fd.append("Adresse", address);
+  fd.append("slug", PRODUCT.slug); fd.append("aff_ref", PRODUCT.affRef);
+  try { await fetch(ORDER_ENDPOINT, { method: "POST", mode: "no-cors", body: fd }); }
+  catch (err) { btn.disabled = false; btn.textContent = "تأكيد الطلب"; setErr("f-phone", "تعذّر إرسال الطلب، تحقّقي من اتصالك بالإنترنت وأعيدي المحاولة"); return; }
+  /* Meta Pixel (sur l'hébergement final) : if (window.fbq) fbq('track','Lead',{value:PRODUCT.price,currency:'MAD'}); */
+  $("orderForm").hidden = true; $("thanksPhone").textContent = phone; $("thanks").hidden = false;
+  $("thanks").scrollIntoView({ behavior: "smooth", block: "center" });
+});
+</script>
+
+</body>
+</html>
