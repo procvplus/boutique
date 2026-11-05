@@ -5,7 +5,8 @@ const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 function drawPhoto(cv, P, cssH){
   const img = new Image(); img.decoding = "async";
   img.onload = () => {
-    const [x0, y0, x1, y1] = P.crop, w = x1 - x0, h = y1 - y0;
+    let cr = P.crop || [0, 0, 1, 1]; if (Math.max(...cr) <= 1) cr = [cr[0] * img.naturalWidth, cr[1] * img.naturalHeight, cr[2] * img.naturalWidth, cr[3] * img.naturalHeight];
+    const [x0, y0, x1, y1] = cr, w = x1 - x0, h = y1 - y0;
     const scale = Math.min(2.5, (cssH * Math.min(devicePixelRatio || 1, 2)) / h) || 1;
     cv.width = Math.round(w * scale); cv.height = Math.round(h * scale);
     cv.style.aspectRatio = w + " / " + h;
