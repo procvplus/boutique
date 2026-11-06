@@ -620,7 +620,7 @@ $("orderForm").addEventListener("submit", async e => {
   fd.append("slug", PRODUCT.slug); fd.append("aff_ref", PRODUCT.affRef);
   try { await fetch(ORDER_ENDPOINT, { method: "POST", mode: "no-cors", body: fd }); }
   catch (err) { btn.disabled = false; btn.textContent = "تأكيد الطلب"; setErr("f-phone", "تعذّر إرسال الطلب، تحقّقي من اتصالك بالإنترنت وأعيدي المحاولة"); return; }
-  if (window.fbq) fbq('track','Lead',{value:PRODUCT.price,currency:'MAD'});
+  if (window.fbq) { fbq('track','Lead',{value:PRODUCT.price,currency:'MAD'}); fbq('track','Purchase',{value:PRODUCT.price,currency:'MAD'}); }
   $("orderForm").hidden = true; $("thanksPhone").textContent = phone; $("thanks").hidden = false;
   $("thanks").scrollIntoView({ behavior: "smooth", block: "center" });
 });
