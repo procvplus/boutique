@@ -126,7 +126,7 @@ $("orderForm").addEventListener("submit", async e => {
   fd.append("slug", PRODUCT.slug); fd.append("aff_ref", PRODUCT.affRef);
   try { await fetch(ORDER_ENDPOINT, { method: "POST", mode: "no-cors", body: fd }); }
   catch (err) { btn.disabled = false; btn.textContent = BTN_LABEL; setErr("f-phone", "تعذّر إرسال الطلب، يرجى التحقق من الاتصال بالإنترنت وإعادة المحاولة"); return; }
-  /* Meta Pixel (sur l'hébergement final) : if (window.fbq) fbq('track','Lead',{value:PRODUCT.price,currency:'MAD'}); */
+  if (window.fbq) fbq('track','Lead',{value:PRODUCT.price,currency:'MAD'});
   $("orderForm").hidden = true; $("thanksPhone").textContent = phone; $("thanks").hidden = false;
   $("thanks").scrollIntoView({ behavior: "smooth", block: "center" });
 });
