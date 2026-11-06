@@ -148,6 +148,30 @@ section .wrap{display:grid;gap:28px}
 .card.hit{outline:3px solid var(--sun);outline-offset:-3px}
 @media (max-width:420px){.card .bd{padding:12px}.card p{display:none}}
 
+/* rayons */
+.rayons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (min-width:760px){.rayons{grid-template-columns:repeat(5,minmax(0,1fr))}}
+.rayon{position:relative;overflow:hidden;display:grid;gap:4px;justify-items:center;text-align:center;padding:20px 12px 16px;border-radius:22px;background:var(--paper);border:1px solid var(--line);text-decoration:none;color:var(--ink);transition:transform .25s,box-shadow .25s,border-color .25s}
+.rayon:hover{transform:translateY(-4px);border-color:var(--sun);box-shadow:0 22px 36px -26px rgba(11,61,48,.6)}
+.rayon .em{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;font-size:1.7rem;background:linear-gradient(145deg,var(--mint),var(--sand));margin-bottom:4px}
+.rayon b{font-family:var(--display);font-size:1rem;line-height:1.4}
+.rayon small{font-size:.8rem;color:var(--ink-soft)}
+.rayons .rayon:last-child:nth-child(odd){grid-column:1/-1}
+@media (min-width:760px){.rayons .rayon:last-child:nth-child(odd){grid-column:auto}}
+#produits .wrap>*{min-width:0}
+.chips{position:sticky;top:calc(64px + env(safe-area-inset-top,0px));z-index:25;background:rgba(247,248,244,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line);margin-inline:calc(-1 * max(18px,env(safe-area-inset-left,0px)))}
+.chips .in{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:10px max(18px,env(safe-area-inset-left,0px))}
+.chips .in::-webkit-scrollbar{display:none}
+.chips a{flex:none;display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:.92rem;padding:8px 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);text-decoration:none;white-space:nowrap;transition:all .2s}
+.chips a.on{background:var(--deep);border-color:var(--deep);color:#fff}
+.chips a i{font-style:normal;font-size:.75rem;opacity:.7}
+.shelf{display:grid;gap:16px;scroll-margin-top:140px;padding-top:26px}
+.shelf-h{display:flex;align-items:end;justify-content:space-between;gap:12px;border-bottom:2px solid var(--line);padding-bottom:10px}
+.shelf-h h3{font-size:clamp(1.25rem,3.6vw,1.6rem);display:flex;align-items:center;gap:10px}
+.shelf-h h3 span{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,var(--mint),var(--sand));font-size:1.3rem}
+.shelf-h p{color:var(--ink-soft);font-size:.9rem}
+.shelf-h .n{flex:none;font-size:.8rem;font-weight:700;color:var(--coral-deep);background:var(--sand);border-radius:999px;padding:3px 12px}
+
 /* étapes */
 .steps{background:var(--deep);color:#fff}
 .steps .eyebrow{color:var(--sun)}
@@ -266,7 +290,7 @@ footer .logo small{color:#A9BFBA}
 <span><svg viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>منتجات مغربية من مختبرات معتمدة</span>
 </div></div></div>
 <header class="top"><div class="wrap"><a class="logo" href="index.html" aria-label="نقاء"><span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="#FFC857" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20c0-7 5-13 15-15-1 10-7 15-14 15"/><path d="M5 20l8-8"/></svg></span><span><b>نقاء</b><small>NAQAA</small></span></a>
-  <nav class="links" aria-label="القائمة"><a href="index.html#produits">منتجاتنا</a><a href="index.html#objectif">حسب هدفكم</a><a href="index.html#commande">طريقة الطلب</a><a href="index.html#faq">الأسئلة الشائعة</a></nav>
+  <nav class="links" aria-label="القائمة"><a href="index.html#produits">منتجاتنا</a><a href="index.html#visage">العناية بالوجه</a><a href="index.html#sante">الصحة والمناعة</a><a href="index.html#commande">طريقة الطلب</a><a href="index.html#faq">الأسئلة الشائعة</a></nav>
   <a class="btn sm" href="index.html#produits"><svg viewBox="0 0 24 24"><path d="M6 6h15l-2 9H8L6 3H3"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg>تسوّقوا الآن</a>
 </div></header>
 
@@ -276,7 +300,7 @@ footer .logo small{color:#A9BFBA}
     <span class="kicker"><i></i>علامة مغربية للعناية والصحة</span>
     <h1>عناية يومية <em>مغربية الصنع</em> لجمالكم وصحّتكم</h1>
     <p class="lead">منتجات مختارة بعناية للبشرة والشعر، ومكمّلات غذائية لروتينكم اليومي. اطلبوا بثقة، فالدفع يكون عند الاستلام.</p>
-    <div class="cta-row"><a class="btn" href="#produits"><svg viewBox="0 0 24 24"><path d="M6 6h15l-2 9H8L6 3H3"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg>اكتشفوا منتجاتنا</a><a class="btn ghost" href="#objectif">ساعدوني في الاختيار</a></div>
+    <div class="cta-row"><a class="btn" href="#produits"><svg viewBox="0 0 24 24"><path d="M6 6h15l-2 9H8L6 3H3"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg>اكتشفوا منتجاتنا</a><a class="btn ghost" href="#produits">تصفّحوا الأقسام</a></div>
     <div class="mini-trust"><span>الدفع عند الاستلام</span><span>مرخّصة من AMMPS</span><span>توصيل إلى كل المدن</span></div>
   </div>
   <div class="fan" aria-hidden="true">
@@ -292,171 +316,168 @@ footer .logo small{color:#A9BFBA}
 
 <div class="cities" aria-label="مدن التوصيل"><div class="track"><span>الدار البيضاء</span><span>الرباط</span><span>مراكش</span><span>فاس</span><span>طنجة</span><span>أكادير</span><span>مكناس</span><span>وجدة</span><span>القنيطرة</span><span>تطوان</span><span>الجديدة</span><span>بني ملال</span><span>آسفي</span><span>الناظور</span><span>العيون</span><span>وجميع مدن المغرب</span><span>الدار البيضاء</span><span>الرباط</span><span>مراكش</span><span>فاس</span><span>طنجة</span><span>أكادير</span><span>مكناس</span><span>وجدة</span><span>القنيطرة</span><span>تطوان</span><span>الجديدة</span><span>بني ملال</span><span>آسفي</span><span>الناظور</span><span>العيون</span><span>وجميع مدن المغرب</span></div></div>
 
-<section id="objectif"><div class="wrap reveal">
-  <div class="head"><span class="eyebrow">ما هو هدفكم؟</span><h2>اختاروا هدفكم، ونقترح عليكم المنتج المناسب</h2><p class="sub">اضغطوا على ما تبحثون عنه، وسنُبرز لكم المنتج الأنسب.</p></div>
-  <div class="goals" role="group" aria-label="الأهداف"><button class="goal" type="button" data-goal="spots" aria-pressed="false"><span>✨</span>بشرة موحّدة اللون</button><button class="goal" type="button" data-goal="acne" aria-pressed="false"><span>🧼</span>بشرة أنقى</button><button class="goal" type="button" data-goal="beauty" aria-pressed="false"><span>🌸</span>بشرة أنعم وأكثر نضارة</button><button class="goal" type="button" data-goal="hair" aria-pressed="false"><span>💇</span>شعر أقوى</button><button class="goal" type="button" data-goal="joints" aria-pressed="false"><span>🚶</span>مفاصل مرتاحة</button><button class="goal" type="button" data-goal="energy" aria-pressed="false"><span>⚡</span>طاقة ونشاط</button><button class="goal" type="button" data-goal="immunity" aria-pressed="false"><span>🛡️</span>مناعة أقوى</button><button class="goal" type="button" data-goal="sleep" aria-pressed="false"><span>🌙</span>نوم وهدوء</button></div>
-</div></section>
+
 
 <section id="produits" style="padding-top:0"><div class="wrap">
-  <div class="head reveal"><span class="eyebrow">منتجاتنا</span><h2>اختاروا روتينكم</h2><p class="sub">كل منتج له صفحته الخاصة بكل التفاصيل وطريقة الاستعمال.</p></div>
-  <div class="filters" role="group" aria-label="الفئات">
-    <button class="filter" type="button" data-f="all" aria-pressed="true">الكل</button>
-    <button class="filter" type="button" data-f="skin" aria-pressed="false">البشرة</button>
-    <button class="filter" type="button" data-f="hair" aria-pressed="false">الشعر</button>
-    <button class="filter" type="button" data-f="body" aria-pressed="false">الجسم والمفاصل</button>
-    <button class="filter" type="button" data-f="supp" aria-pressed="false">المكمّلات الغذائية</button>
-  </div>
-  <div class="grid" id="grid"><article class="card" data-cat="skin" data-goal="spots">
+  <div class="head reveal"><span class="eyebrow">منتجاتنا</span><h2>تسوّقوا حسب القسم</h2><p class="sub">30 منتجاً مرتّبة في 5 أقسام واضحة. اختاروا القسم، ثم المنتج المناسب لكم.</p></div>
+  <nav class="rayons reveal" aria-label="أقسام المنتجات"><a class="rayon" href="#visage"><span class="em">🌿</span><b>العناية بالوجه</b><small>8 منتجات</small></a><a class="rayon" href="#cheveux"><span class="em">💇</span><b>العناية بالشعر</b><small>5 منتجات</small></a><a class="rayon" href="#beaute"><span class="em">🌸</span><b>جمال من الداخل</b><small>3 منتجات</small></a><a class="rayon" href="#energie"><span class="em">⚡</span><b>طاقة، نوم وهدوء</b><small>7 منتجات</small></a><a class="rayon" href="#sante"><span class="em">🛡️</span><b>صحة، مفاصل ومناعة</b><small>7 منتجات</small></a></nav>
+  <div class="chips" aria-label="الأقسام"><div class="in"><a href="#visage" data-r="visage">🌿 العناية بالوجه <i>8</i></a><a href="#cheveux" data-r="cheveux">💇 العناية بالشعر <i>5</i></a><a href="#beaute" data-r="beaute">🌸 جمال من الداخل <i>3</i></a><a href="#energie" data-r="energie">⚡ طاقة، نوم وهدوء <i>7</i></a><a href="#sante" data-r="sante">🛡️ صحة، مفاصل ومناعة <i>7</i></a></div></div>
+  <div class="shelf" id="visage"><div class="shelf-h"><div><h3><span>🌿</span>العناية بالوجه</h3><p>بشرة موحّدة، نقية ومشرقة: كريمات، سيرومات وغسول.</p></div><span class="n">8 منتجات</span></div>
+  <div class="grid"><article class="card">
   <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a68d1456ae79/_1785254213.jpeg" data-crop="220,330,800,910" role="img" aria-label="كريم ضد الكلف"></canvas><span class="tag">العناية بالبشرة</span></div>
   <div class="bd"><span class="for">للنساء</span><h3>كريم ضد الكلف</h3><p>يساعد على تقليل مظهر الكلف والبقع الداكنة لبشرة أكثر توحّداً.</p>
   <div class="row"><span class="price">170 <small>درهم</small></span><a class="buy" href="creme.html">اطلب الآن</a></div></div>
   <a class="cover" href="creme.html" aria-label="كريم ضد الكلف"></a>
-</article><article class="card" data-cat="hair" data-goal="hair">
-  <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a6753a6c97e5/_1785156518.jpeg" data-crop="30,330,310,1075" data-patch="90,165,0.82,0.82" role="img" aria-label="زيت لتساقط الشعر"></canvas><span class="tag">العناية بالشعر</span></div>
-  <div class="bd"><span class="for">للرجال والنساء</span><h3>زيت لتساقط الشعر</h3><p>يغذّي فروة الرأس ويقوّي الشعر من الجذور.</p>
-  <div class="row"><span class="price">170 <small>درهم</small></span><a class="buy" href="cheveux.html">اطلب الآن</a></div></div>
-  <a class="cover" href="cheveux.html" aria-label="زيت لتساقط الشعر"></a>
-</article><article class="card" data-cat="supp" data-goal="beauty">
-  <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a6780fe62d56/_1785168126.jpeg" data-crop="580,537,1080,1080" role="img" aria-label="كولاجين بحري"></canvas><span class="tag">مكمّل غذائي</span></div>
-  <div class="bd"><span class="for">للنساء</span><h3>كولاجين بحري</h3><p>عناية من الداخل بنضارة البشرة وجمال الشعر والأظافر.</p>
-  <div class="row"><span class="price">180 <small>درهم</small></span><a class="buy" href="collagene.html">اطلب الآن</a></div></div>
-  <a class="cover" href="collagene.html" aria-label="كولاجين بحري"></a>
-</article><article class="card" data-cat="supp" data-goal="joints">
-  <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a675343b54ad/_1785156419.jpeg" data-crop="290,100,720,925" role="img" aria-label="مكمّل المفاصل"></canvas><span class="tag">مكمّل غذائي</span></div>
-  <div class="bd"><span class="for">للرجال والنساء</span><h3>مكمّل المفاصل</h3><p>دعم يومي لراحة المفاصل وسهولة الحركة.</p>
-  <div class="row"><span class="price">199 <small>درهم</small></span><a class="buy" href="articulations.html">اطلب الآن</a></div></div>
-  <a class="cover" href="articulations.html" aria-label="مكمّل المفاصل"></a>
-</article><article class="card" data-cat="supp" data-goal="energy">
-  <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a68de488bf07/_1785257544.jpeg" data-crop="350,290,740,900" role="img" aria-label="مغنيسيوم"></canvas><span class="tag">مكمّل غذائي</span></div>
-  <div class="bd"><span class="for">للرجال والنساء</span><h3>مغنيسيوم</h3><p>يساهم في تقليل التعب ودعم العضلات والأعصاب.</p>
-  <div class="row"><span class="price">180 <small>درهم</small></span><a class="buy" href="magnesium.html">اطلب الآن</a></div></div>
-  <a class="cover" href="magnesium.html" aria-label="مغنيسيوم"></a>
-</article><article class="card" data-cat="skin" data-goal="spots">
+</article><article class="card">
   <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a6754504b131/_1785156688.jpg" data-crop="0.58,0.22,1,0.98" role="img" aria-label="سيروم النياسيناميد"></canvas><span class="tag">العناية بالبشرة</span></div>
   <div class="bd"><span class="for">للنساء</span><h3>سيروم النياسيناميد</h3><p>يوحّد لون البشرة ويقلّل مظهر المسامّ.</p>
   <div class="row"><span class="price">170 <small>درهم</small></span><a class="buy" href="niacinamide.html">اطلب الآن</a></div></div>
   <a class="cover" href="niacinamide.html" aria-label="سيروم النياسيناميد"></a>
-</article><article class="card" data-cat="skin" data-goal="beauty">
-  <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a6882dcb5c2b/_1785234140.jpeg" data-crop="0.18,0.3,0.82,0.88" role="img" aria-label="سيروم الريتينول"></canvas><span class="tag">العناية بالبشرة</span></div>
-  <div class="bd"><span class="for">للنساء</span><h3>سيروم الريتينول</h3><p>عناية ليلية لبشرة أنعم وأكثر إشراقاً.</p>
-  <div class="row"><span class="price">170 <small>درهم</small></span><a class="buy" href="retinol.html">اطلب الآن</a></div></div>
-  <a class="cover" href="retinol.html" aria-label="سيروم الريتينول"></a>
-</article><article class="card" data-cat="hair" data-goal="hair">
-  <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a687c92ce248/_1785232530.jpeg" data-crop="0.4,0.18,0.98,1" role="img" aria-label="شامبو البيوتين"></canvas><span class="tag">العناية بالشعر</span></div>
-  <div class="bd"><span class="for">للرجال والنساء</span><h3>شامبو البيوتين</h3><p>شعر أقوى وأكثر لمعاناً.</p>
-  <div class="row"><span class="price">189 <small>درهم</small></span><a class="buy" href="shampoing-biotine.html">اطلب الآن</a></div></div>
-  <a class="cover" href="shampoing-biotine.html" aria-label="شامبو البيوتين"></a>
-</article><article class="card" data-cat="hair" data-goal="hair">
-  <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a6891bbdd5d2/_1785237947.jpeg" data-crop="0.36,0.2,0.86,1" role="img" aria-label="شامبو ضد القمل"></canvas><span class="tag">العناية بالشعر</span></div>
-  <div class="bd"><span class="for">للعائلة</span><h3>شامبو ضد القمل</h3><p>حلّ عملي للعائلة في المنزل.</p>
-  <div class="row"><span class="price">175 <small>درهم</small></span><a class="buy" href="anti-poux.html">اطلب الآن</a></div></div>
-  <a class="cover" href="anti-poux.html" aria-label="شامبو ضد القمل"></a>
-</article><article class="card" data-cat="body" data-goal="joints">
-  <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a66242f85370/_1785078831.jpeg" data-crop="0.5,0.28,0.92,0.98" role="img" aria-label="سبراي المفاصل"></canvas><span class="tag">العناية بالجسم</span></div>
-  <div class="bd"><span class="for">للرجال والنساء</span><h3>سبراي المفاصل</h3><p>إحساس دافئ ومريح للمفاصل والعضلات.</p>
-  <div class="row"><span class="price">170 <small>درهم</small></span><a class="buy" href="mafasil.html">اطلب الآن</a></div></div>
-  <a class="cover" href="mafasil.html" aria-label="سبراي المفاصل"></a>
-</article><article class="card" data-cat="supp" data-goal="energy">
-  <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a71f66c8028e/_1785853548.jpeg" data-crop="0.3,0.2,0.72,0.72" role="img" aria-label="مكمّل الحديد"></canvas><span class="tag">مكمّل غذائي</span></div>
-  <div class="bd"><span class="for">للنساء</span><h3>مكمّل الحديد</h3><p>طاقة أكبر وتعب أقلّ.</p>
-  <div class="row"><span class="price">199 <small>درهم</small></span><a class="buy" href="fer.html">اطلب الآن</a></div></div>
-  <a class="cover" href="fer.html" aria-label="مكمّل الحديد"></a>
-</article><article class="card" data-cat="supp" data-goal="immunity">
-  <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a678314d11db/_1785168660.jpeg" data-crop="0.22,0.22,0.78,0.9" role="img" aria-label="فيتامين D3 + K2"></canvas><span class="tag">مكمّل غذائي</span></div>
-  <div class="bd"><span class="for">للرجال والنساء</span><h3>فيتامين D3 + K2</h3><p>لعظام أقوى ومناعة أفضل.</p>
-  <div class="row"><span class="price">199 <small>درهم</small></span><a class="buy" href="vitamine-d3.html">اطلب الآن</a></div></div>
-  <a class="cover" href="vitamine-d3.html" aria-label="فيتامين D3 + K2"></a>
-</article><article class="card" data-cat="supp" data-goal="immunity">
-  <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a6783c95e918/_1785168841.jpeg" data-crop="0.02,0.18,0.58,0.92" role="img" aria-label="فيتامين C"></canvas><span class="tag">مكمّل غذائي</span></div>
-  <div class="bd"><span class="for">للرجال والنساء</span><h3>فيتامين C</h3><p>مناعة وطاقة كل يوم.</p>
-  <div class="row"><span class="price">170 <small>درهم</small></span><a class="buy" href="vitamine-c.html">اطلب الآن</a></div></div>
-  <a class="cover" href="vitamine-c.html" aria-label="فيتامين C"></a>
-</article><article class="card" data-cat="supp" data-goal="sleep">
-  <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a674588342cd/_1785152904.jpeg" data-crop="0.5,0.35,1,1" role="img" aria-label="الميلاتونين"></canvas><span class="tag">مكمّل غذائي</span></div>
-  <div class="bd"><span class="for">للكبار</span><h3>الميلاتونين</h3><p>نوم أسهل واستيقاظ بنشاط.</p>
-  <div class="row"><span class="price">199 <small>درهم</small></span><a class="buy" href="melatonine.html">اطلب الآن</a></div></div>
-  <a class="cover" href="melatonine.html" aria-label="الميلاتونين"></a>
-</article><article class="card" data-cat="hair" data-goal="hair">
-  <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a67716f7a2c1/_1785164143.jpeg" data-crop="0.02,0.32,0.58,1" role="img" aria-label="بروتين الشعر"></canvas><span class="tag">مكمّل غذائي</span></div>
-  <div class="bd"><span class="for">للرجال والنساء</span><h3>بروتين الشعر</h3><p>تغذية الشعر والأظافر من الداخل.</p>
-  <div class="row"><span class="price">189 <small>درهم</small></span><a class="buy" href="proteine-cheveux.html">اطلب الآن</a></div></div>
-  <a class="cover" href="proteine-cheveux.html" aria-label="بروتين الشعر"></a>
-</article><article class="card" data-cat="supp" data-goal="energy">
-  <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a67706b27d05/_1785163883.jpeg" data-crop="0.2,0.28,0.72,0.98" role="img" aria-label="ملتي فيتامين"></canvas><span class="tag">مكمّل غذائي</span></div>
-  <div class="bd"><span class="for">للرجال والنساء</span><h3>ملتي فيتامين</h3><p>فيتامينات يومك في كبسولة واحدة.</p>
-  <div class="row"><span class="price">180 <small>درهم</small></span><a class="buy" href="multivitamine.html">اطلب الآن</a></div></div>
-  <a class="cover" href="multivitamine.html" aria-label="ملتي فيتامين"></a>
-</article><article class="card" data-cat="supp" data-goal="immunity">
-  <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a6782f54335f/_1785168629.jpeg" data-crop="0.38,0.32,0.88,0.98" role="img" aria-label="البروبيوتيك"></canvas><span class="tag">مكمّل غذائي</span></div>
-  <div class="bd"><span class="for">للرجال والنساء</span><h3>البروبيوتيك</h3><p>هضم مريح وتوازن من الداخل.</p>
-  <div class="row"><span class="price">189 <small>درهم</small></span><a class="buy" href="probiotique.html">اطلب الآن</a></div></div>
-  <a class="cover" href="probiotique.html" aria-label="البروبيوتيك"></a>
-</article><article class="card" data-cat="supp" data-goal="energy">
-  <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a677ecb30833/_1785167563.jpeg" data-crop="0.45,0.3,0.98,0.98" role="img" aria-label="السبيرولينا"></canvas><span class="tag">مكمّل غذائي</span></div>
-  <div class="bd"><span class="for">للرجال والنساء</span><h3>السبيرولينا</h3><p>طاقة طبيعية مع فيتامين C.</p>
-  <div class="row"><span class="price">180 <small>درهم</small></span><a class="buy" href="spiruline.html">اطلب الآن</a></div></div>
-  <a class="cover" href="spiruline.html" aria-label="السبيرولينا"></a>
-</article><article class="card" data-cat="supp" data-goal="energy">
-  <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a67776494b46/_1785165668.jpeg" data-crop="0.22,0.28,0.78,0.98" role="img" aria-label="الجينسنغ الأحمر"></canvas><span class="tag">مكمّل غذائي</span></div>
-  <div class="bd"><span class="for">للرجال والنساء</span><h3>الجينسنغ الأحمر</h3><p>نشاط وحيوية طوال اليوم.</p>
-  <div class="row"><span class="price">189 <small>درهم</small></span><a class="buy" href="ginseng.html">اطلب الآن</a></div></div>
-  <a class="cover" href="ginseng.html" aria-label="الجينسنغ الأحمر"></a>
-</article><article class="card" data-cat="supp" data-goal="energy">
-  <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a67779401ab3/_1785165716.jpeg" data-crop="0.4,0.3,0.9,0.98" role="img" aria-label="الكرياتين"></canvas><span class="tag">مكمّل غذائي</span></div>
-  <div class="bd"><span class="for">للرياضيين</span><h3>الكرياتين</h3><p>أداء أقوى في التمارين.</p>
-  <div class="row"><span class="price">189 <small>درهم</small></span><a class="buy" href="creatine.html">اطلب الآن</a></div></div>
-  <a class="cover" href="creatine.html" aria-label="الكرياتين"></a>
-</article><article class="card" data-cat="supp" data-goal="immunity">
-  <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a678a5443514/_1785170516.jpeg" data-crop="0.36,0.15,0.84,1" role="img" aria-label="شراب الكحة"></canvas><span class="tag">مكمّل غذائي</span></div>
-  <div class="bd"><span class="for">للكبار</span><h3>شراب الكحة</h3><p>حلق مرتاح في أيام البرد.</p>
-  <div class="row"><span class="price">170 <small>درهم</small></span><a class="buy" href="toux.html">اطلب الآن</a></div></div>
-  <a class="cover" href="toux.html" aria-label="شراب الكحة"></a>
-</article><article class="card" data-cat="skin" data-goal="acne">
-  <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a6879613ac43/_1785231713.jpg" data-crop="0.3,0.42,0.62,1" role="img" aria-label="غسول الوجه"></canvas><span class="tag">العناية بالبشرة</span></div>
-  <div class="bd"><span class="for">للرجال والنساء</span><h3>غسول الوجه</h3><p>تنظيف لطيف صباحاً ومساءً.</p>
-  <div class="row"><span class="price">170 <small>درهم</small></span><a class="buy" href="gel-nettoyant.html">اطلب الآن</a></div></div>
-  <a class="cover" href="gel-nettoyant.html" aria-label="غسول الوجه"></a>
-</article><article class="card" data-cat="skin" data-goal="beauty">
+</article><article class="card">
   <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a687a27bd31c/_1785231911.jpg" data-crop="0.02,0.56,0.45,1" role="img" aria-label="كريم التجاعيد"></canvas><span class="tag">العناية بالبشرة</span></div>
   <div class="bd"><span class="for">للنساء</span><h3>كريم التجاعيد</h3><p>يقلّل مظهر الخطوط ويمنح البشرة نعومة.</p>
   <div class="row"><span class="price">180 <small>درهم</small></span><a class="buy" href="anti-rides.html">اطلب الآن</a></div></div>
   <a class="cover" href="anti-rides.html" aria-label="كريم التجاعيد"></a>
-</article><article class="card" data-cat="skin" data-goal="acne">
-  <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a678904c49c0/_1785170180.jpeg" data-crop="0,0.58,0.42,1" role="img" aria-label="كريم حب الشباب"></canvas><span class="tag">العناية بالبشرة</span></div>
-  <div class="bd"><span class="for">للرجال والنساء</span><h3>كريم حب الشباب</h3><p>ينقّي البشرة ويقلّل مظهر الحبوب.</p>
-  <div class="row"><span class="price">170 <small>درهم</small></span><a class="buy" href="anti-acne.html">اطلب الآن</a></div></div>
-  <a class="cover" href="anti-acne.html" aria-label="كريم حب الشباب"></a>
-</article><article class="card" data-cat="skin" data-goal="beauty">
+</article><article class="card">
   <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a678c30d1848/_1785170992.jpeg" data-crop="0.25,0.45,0.75,0.86" role="img" aria-label="كريم الهالات السوداء"></canvas><span class="tag">العناية بالبشرة</span></div>
   <div class="bd"><span class="for">للنساء</span><h3>كريم الهالات السوداء</h3><p>نظرة أكثر انتعاشاً وهالات أقلّ ظهوراً.</p>
   <div class="row"><span class="price">190 <small>درهم</small></span><a class="buy" href="contour-yeux.html">اطلب الآن</a></div></div>
   <a class="cover" href="contour-yeux.html" aria-label="كريم الهالات السوداء"></a>
-</article><article class="card" data-cat="supp" data-goal="sleep">
-  <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a678170a40ee/_1785168240.jpeg" data-crop="0.3,0.36,0.72,1" role="img" aria-label="تهدئة الأعصاب"></canvas><span class="tag">مكمّل غذائي</span></div>
-  <div class="bd"><span class="for">للرجال والنساء</span><h3>تهدئة الأعصاب</h3><p>هدوء وتوازن في الأيام المزدحمة.</p>
-  <div class="row"><span class="price">175 <small>درهم</small></span><a class="buy" href="calme.html">اطلب الآن</a></div></div>
-  <a class="cover" href="calme.html" aria-label="تهدئة الأعصاب"></a>
-</article><article class="card" data-cat="supp" data-goal="energy">
-  <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a67677e97e18/_1785161598.jpeg" data-crop="0.3,0.25,0.7,0.85" role="img" aria-label="المورينغا"></canvas><span class="tag">مكمّل غذائي</span></div>
-  <div class="bd"><span class="for">للرجال والنساء</span><h3>المورينغا</h3><p>نشاط طبيعي من أوراق المورينغا.</p>
-  <div class="row"><span class="price">170 <small>درهم</small></span><a class="buy" href="moringa.html">اطلب الآن</a></div></div>
-  <a class="cover" href="moringa.html" aria-label="المورينغا"></a>
-</article><article class="card" data-cat="skin" data-goal="acne">
+</article><article class="card">
+  <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a6882dcb5c2b/_1785234140.jpeg" data-crop="0.18,0.3,0.82,0.88" role="img" aria-label="سيروم الريتينول"></canvas><span class="tag">العناية بالبشرة</span></div>
+  <div class="bd"><span class="for">للنساء</span><h3>سيروم الريتينول</h3><p>عناية ليلية لبشرة أنعم وأكثر إشراقاً.</p>
+  <div class="row"><span class="price">170 <small>درهم</small></span><a class="buy" href="retinol.html">اطلب الآن</a></div></div>
+  <a class="cover" href="retinol.html" aria-label="سيروم الريتينول"></a>
+</article><article class="card">
+  <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a678904c49c0/_1785170180.jpeg" data-crop="0,0.58,0.42,1" role="img" aria-label="كريم حب الشباب"></canvas><span class="tag">العناية بالبشرة</span></div>
+  <div class="bd"><span class="for">للرجال والنساء</span><h3>كريم حب الشباب</h3><p>ينقّي البشرة ويقلّل مظهر الحبوب.</p>
+  <div class="row"><span class="price">170 <small>درهم</small></span><a class="buy" href="anti-acne.html">اطلب الآن</a></div></div>
+  <a class="cover" href="anti-acne.html" aria-label="كريم حب الشباب"></a>
+</article><article class="card">
+  <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a6879613ac43/_1785231713.jpg" data-crop="0.3,0.42,0.62,1" role="img" aria-label="غسول الوجه"></canvas><span class="tag">العناية بالبشرة</span></div>
+  <div class="bd"><span class="for">للرجال والنساء</span><h3>غسول الوجه</h3><p>تنظيف لطيف صباحاً ومساءً.</p>
+  <div class="row"><span class="price">170 <small>درهم</small></span><a class="buy" href="gel-nettoyant.html">اطلب الآن</a></div></div>
+  <a class="cover" href="gel-nettoyant.html" aria-label="غسول الوجه"></a>
+</article><article class="card">
   <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a68946dd2997/_1785238637.jpeg" data-crop="0.6,0.28,1,1" role="img" aria-label="جل الوجه المرطّب"></canvas><span class="tag">العناية بالبشرة</span></div>
   <div class="bd"><span class="for">للرجال والنساء</span><h3>جل الوجه المرطّب</h3><p>تنظيف وترطيب في خطوة واحدة.</p>
   <div class="row"><span class="price">179 <small>درهم</small></span><a class="buy" href="gel-hydratant.html">اطلب الآن</a></div></div>
   <a class="cover" href="gel-hydratant.html" aria-label="جل الوجه المرطّب"></a>
-</article><article class="card" data-cat="hair" data-goal="hair">
+</article></div></div><div class="shelf" id="cheveux"><div class="shelf-h"><div><h3><span>💇</span>العناية بالشعر</h3><p>شعر أقوى ولامع من الجذور حتى الأطراف.</p></div><span class="n">5 منتجات</span></div>
+  <div class="grid"><article class="card">
+  <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a6753a6c97e5/_1785156518.jpeg" data-crop="30,330,310,1075" data-patch="90,165,0.82,0.82" role="img" aria-label="زيت لتساقط الشعر"></canvas><span class="tag">العناية بالشعر</span></div>
+  <div class="bd"><span class="for">للرجال والنساء</span><h3>زيت لتساقط الشعر</h3><p>يغذّي فروة الرأس ويقوّي الشعر من الجذور.</p>
+  <div class="row"><span class="price">170 <small>درهم</small></span><a class="buy" href="cheveux.html">اطلب الآن</a></div></div>
+  <a class="cover" href="cheveux.html" aria-label="زيت لتساقط الشعر"></a>
+</article><article class="card">
+  <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a687c92ce248/_1785232530.jpeg" data-crop="0.4,0.18,0.98,1" role="img" aria-label="شامبو البيوتين"></canvas><span class="tag">العناية بالشعر</span></div>
+  <div class="bd"><span class="for">للرجال والنساء</span><h3>شامبو البيوتين</h3><p>شعر أقوى وأكثر لمعاناً.</p>
+  <div class="row"><span class="price">189 <small>درهم</small></span><a class="buy" href="shampoing-biotine.html">اطلب الآن</a></div></div>
+  <a class="cover" href="shampoing-biotine.html" aria-label="شامبو البيوتين"></a>
+</article><article class="card">
+  <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a67716f7a2c1/_1785164143.jpeg" data-crop="0.02,0.32,0.58,1" role="img" aria-label="بروتين الشعر"></canvas><span class="tag">مكمّل غذائي</span></div>
+  <div class="bd"><span class="for">للرجال والنساء</span><h3>بروتين الشعر</h3><p>تغذية الشعر والأظافر من الداخل.</p>
+  <div class="row"><span class="price">189 <small>درهم</small></span><a class="buy" href="proteine-cheveux.html">اطلب الآن</a></div></div>
+  <a class="cover" href="proteine-cheveux.html" aria-label="بروتين الشعر"></a>
+</article><article class="card">
   <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a6753cb0d0ac/_1785156555.jpeg" data-crop="0.55,0.4,1,1" role="img" aria-label="سيروم لمعان الشعر"></canvas><span class="tag">العناية بالشعر</span></div>
   <div class="bd"><span class="for">للرجال والنساء</span><h3>سيروم لمعان الشعر</h3><p>لمعان ونعومة للأطراف.</p>
   <div class="row"><span class="price">170 <small>درهم</small></span><a class="buy" href="serum-brillance.html">اطلب الآن</a></div></div>
   <a class="cover" href="serum-brillance.html" aria-label="سيروم لمعان الشعر"></a>
-</article><article class="card" data-cat="supp" data-goal="joints">
+</article><article class="card">
+  <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a6891bbdd5d2/_1785237947.jpeg" data-crop="0.36,0.2,0.86,1" role="img" aria-label="شامبو ضد القمل"></canvas><span class="tag">العناية بالشعر</span></div>
+  <div class="bd"><span class="for">للعائلة</span><h3>شامبو ضد القمل</h3><p>حلّ عملي للعائلة في المنزل.</p>
+  <div class="row"><span class="price">175 <small>درهم</small></span><a class="buy" href="anti-poux.html">اطلب الآن</a></div></div>
+  <a class="cover" href="anti-poux.html" aria-label="شامبو ضد القمل"></a>
+</article></div></div><div class="shelf" id="beaute"><div class="shelf-h"><div><h3><span>🌸</span>جمال من الداخل</h3><p>مكمّلات للنضارة والحيوية اليومية.</p></div><span class="n">3 منتجات</span></div>
+  <div class="grid"><article class="card">
+  <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a6780fe62d56/_1785168126.jpeg" data-crop="580,537,1080,1080" role="img" aria-label="كولاجين بحري"></canvas><span class="tag">مكمّل غذائي</span></div>
+  <div class="bd"><span class="for">للنساء</span><h3>كولاجين بحري</h3><p>عناية من الداخل بنضارة البشرة وجمال الشعر والأظافر.</p>
+  <div class="row"><span class="price">180 <small>درهم</small></span><a class="buy" href="collagene.html">اطلب الآن</a></div></div>
+  <a class="cover" href="collagene.html" aria-label="كولاجين بحري"></a>
+</article><article class="card">
+  <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a71f66c8028e/_1785853548.jpeg" data-crop="0.3,0.2,0.72,0.72" role="img" aria-label="مكمّل الحديد"></canvas><span class="tag">مكمّل غذائي</span></div>
+  <div class="bd"><span class="for">للنساء</span><h3>مكمّل الحديد</h3><p>طاقة أكبر وتعب أقلّ.</p>
+  <div class="row"><span class="price">199 <small>درهم</small></span><a class="buy" href="fer.html">اطلب الآن</a></div></div>
+  <a class="cover" href="fer.html" aria-label="مكمّل الحديد"></a>
+</article><article class="card">
+  <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a67706b27d05/_1785163883.jpeg" data-crop="0.2,0.28,0.72,0.98" role="img" aria-label="ملتي فيتامين"></canvas><span class="tag">مكمّل غذائي</span></div>
+  <div class="bd"><span class="for">للرجال والنساء</span><h3>ملتي فيتامين</h3><p>فيتامينات يومك في كبسولة واحدة.</p>
+  <div class="row"><span class="price">180 <small>درهم</small></span><a class="buy" href="multivitamine.html">اطلب الآن</a></div></div>
+  <a class="cover" href="multivitamine.html" aria-label="ملتي فيتامين"></a>
+</article></div></div><div class="shelf" id="energie"><div class="shelf-h"><div><h3><span>⚡</span>طاقة، نوم وهدوء</h3><p>نشاط خلال النهار، وراحة وهدوء في المساء.</p></div><span class="n">7 منتجات</span></div>
+  <div class="grid"><article class="card">
+  <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a68de488bf07/_1785257544.jpeg" data-crop="350,290,740,900" role="img" aria-label="مغنيسيوم"></canvas><span class="tag">مكمّل غذائي</span></div>
+  <div class="bd"><span class="for">للرجال والنساء</span><h3>مغنيسيوم</h3><p>يساهم في تقليل التعب ودعم العضلات والأعصاب.</p>
+  <div class="row"><span class="price">180 <small>درهم</small></span><a class="buy" href="magnesium.html">اطلب الآن</a></div></div>
+  <a class="cover" href="magnesium.html" aria-label="مغنيسيوم"></a>
+</article><article class="card">
+  <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a67776494b46/_1785165668.jpeg" data-crop="0.22,0.28,0.78,0.98" role="img" aria-label="الجينسنغ الأحمر"></canvas><span class="tag">مكمّل غذائي</span></div>
+  <div class="bd"><span class="for">للرجال والنساء</span><h3>الجينسنغ الأحمر</h3><p>نشاط وحيوية طوال اليوم.</p>
+  <div class="row"><span class="price">189 <small>درهم</small></span><a class="buy" href="ginseng.html">اطلب الآن</a></div></div>
+  <a class="cover" href="ginseng.html" aria-label="الجينسنغ الأحمر"></a>
+</article><article class="card">
+  <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a677ecb30833/_1785167563.jpeg" data-crop="0.45,0.3,0.98,0.98" role="img" aria-label="السبيرولينا"></canvas><span class="tag">مكمّل غذائي</span></div>
+  <div class="bd"><span class="for">للرجال والنساء</span><h3>السبيرولينا</h3><p>طاقة طبيعية مع فيتامين C.</p>
+  <div class="row"><span class="price">180 <small>درهم</small></span><a class="buy" href="spiruline.html">اطلب الآن</a></div></div>
+  <a class="cover" href="spiruline.html" aria-label="السبيرولينا"></a>
+</article><article class="card">
+  <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a67677e97e18/_1785161598.jpeg" data-crop="0.3,0.25,0.7,0.85" role="img" aria-label="المورينغا"></canvas><span class="tag">مكمّل غذائي</span></div>
+  <div class="bd"><span class="for">للرجال والنساء</span><h3>المورينغا</h3><p>نشاط طبيعي من أوراق المورينغا.</p>
+  <div class="row"><span class="price">170 <small>درهم</small></span><a class="buy" href="moringa.html">اطلب الآن</a></div></div>
+  <a class="cover" href="moringa.html" aria-label="المورينغا"></a>
+</article><article class="card">
+  <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a67779401ab3/_1785165716.jpeg" data-crop="0.4,0.3,0.9,0.98" role="img" aria-label="الكرياتين"></canvas><span class="tag">مكمّل غذائي</span></div>
+  <div class="bd"><span class="for">للرياضيين</span><h3>الكرياتين</h3><p>أداء أقوى في التمارين.</p>
+  <div class="row"><span class="price">189 <small>درهم</small></span><a class="buy" href="creatine.html">اطلب الآن</a></div></div>
+  <a class="cover" href="creatine.html" aria-label="الكرياتين"></a>
+</article><article class="card">
+  <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a674588342cd/_1785152904.jpeg" data-crop="0.5,0.35,1,1" role="img" aria-label="الميلاتونين"></canvas><span class="tag">مكمّل غذائي</span></div>
+  <div class="bd"><span class="for">للكبار</span><h3>الميلاتونين</h3><p>نوم أسهل واستيقاظ بنشاط.</p>
+  <div class="row"><span class="price">199 <small>درهم</small></span><a class="buy" href="melatonine.html">اطلب الآن</a></div></div>
+  <a class="cover" href="melatonine.html" aria-label="الميلاتونين"></a>
+</article><article class="card">
+  <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a678170a40ee/_1785168240.jpeg" data-crop="0.3,0.36,0.72,1" role="img" aria-label="تهدئة الأعصاب"></canvas><span class="tag">مكمّل غذائي</span></div>
+  <div class="bd"><span class="for">للرجال والنساء</span><h3>تهدئة الأعصاب</h3><p>هدوء وتوازن في الأيام المزدحمة.</p>
+  <div class="row"><span class="price">175 <small>درهم</small></span><a class="buy" href="calme.html">اطلب الآن</a></div></div>
+  <a class="cover" href="calme.html" aria-label="تهدئة الأعصاب"></a>
+</article></div></div><div class="shelf" id="sante"><div class="shelf-h"><div><h3><span>🛡️</span>صحة، مفاصل ومناعة</h3><p>دعم يومي للمفاصل والعظام والمناعة.</p></div><span class="n">7 منتجات</span></div>
+  <div class="grid"><article class="card">
+  <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a675343b54ad/_1785156419.jpeg" data-crop="290,100,720,925" role="img" aria-label="مكمّل المفاصل"></canvas><span class="tag">مكمّل غذائي</span></div>
+  <div class="bd"><span class="for">للرجال والنساء</span><h3>مكمّل المفاصل</h3><p>دعم يومي لراحة المفاصل وسهولة الحركة.</p>
+  <div class="row"><span class="price">199 <small>درهم</small></span><a class="buy" href="articulations.html">اطلب الآن</a></div></div>
+  <a class="cover" href="articulations.html" aria-label="مكمّل المفاصل"></a>
+</article><article class="card">
+  <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a66242f85370/_1785078831.jpeg" data-crop="0.5,0.28,0.92,0.98" role="img" aria-label="سبراي المفاصل"></canvas><span class="tag">العناية بالجسم</span></div>
+  <div class="bd"><span class="for">للرجال والنساء</span><h3>سبراي المفاصل</h3><p>إحساس دافئ ومريح للمفاصل والعضلات.</p>
+  <div class="row"><span class="price">170 <small>درهم</small></span><a class="buy" href="mafasil.html">اطلب الآن</a></div></div>
+  <a class="cover" href="mafasil.html" aria-label="سبراي المفاصل"></a>
+</article><article class="card">
   <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a68dfd3c739b/_1785257939.jpeg" data-crop="0.28,0.3,0.72,0.82" role="img" aria-label="الكالسيوم"></canvas><span class="tag">مكمّل غذائي</span></div>
   <div class="bd"><span class="for">للرجال والنساء</span><h3>الكالسيوم</h3><p>لعظام وأسنان قوية.</p>
   <div class="row"><span class="price">180 <small>درهم</small></span><a class="buy" href="calcium.html">اطلب الآن</a></div></div>
   <a class="cover" href="calcium.html" aria-label="الكالسيوم"></a>
-</article></div>
+</article><article class="card">
+  <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a678314d11db/_1785168660.jpeg" data-crop="0.22,0.22,0.78,0.9" role="img" aria-label="فيتامين D3 + K2"></canvas><span class="tag">مكمّل غذائي</span></div>
+  <div class="bd"><span class="for">للرجال والنساء</span><h3>فيتامين D3 + K2</h3><p>لعظام أقوى ومناعة أفضل.</p>
+  <div class="row"><span class="price">199 <small>درهم</small></span><a class="buy" href="vitamine-d3.html">اطلب الآن</a></div></div>
+  <a class="cover" href="vitamine-d3.html" aria-label="فيتامين D3 + K2"></a>
+</article><article class="card">
+  <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a6783c95e918/_1785168841.jpeg" data-crop="0.02,0.18,0.58,0.92" role="img" aria-label="فيتامين C"></canvas><span class="tag">مكمّل غذائي</span></div>
+  <div class="bd"><span class="for">للرجال والنساء</span><h3>فيتامين C</h3><p>مناعة وطاقة كل يوم.</p>
+  <div class="row"><span class="price">170 <small>درهم</small></span><a class="buy" href="vitamine-c.html">اطلب الآن</a></div></div>
+  <a class="cover" href="vitamine-c.html" aria-label="فيتامين C"></a>
+</article><article class="card">
+  <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a6782f54335f/_1785168629.jpeg" data-crop="0.38,0.32,0.88,0.98" role="img" aria-label="البروبيوتيك"></canvas><span class="tag">مكمّل غذائي</span></div>
+  <div class="bd"><span class="for">للرجال والنساء</span><h3>البروبيوتيك</h3><p>هضم مريح وتوازن من الداخل.</p>
+  <div class="row"><span class="price">189 <small>درهم</small></span><a class="buy" href="probiotique.html">اطلب الآن</a></div></div>
+  <a class="cover" href="probiotique.html" aria-label="البروبيوتيك"></a>
+</article><article class="card">
+  <div class="ph"><canvas data-src="https://marqueonline.ma/OLD/public/products_images/6a678a5443514/_1785170516.jpeg" data-crop="0.36,0.15,0.84,1" role="img" aria-label="شراب الكحة"></canvas><span class="tag">مكمّل غذائي</span></div>
+  <div class="bd"><span class="for">للكبار</span><h3>شراب الكحة</h3><p>حلق مرتاح في أيام البرد.</p>
+  <div class="row"><span class="price">170 <small>درهم</small></span><a class="buy" href="toux.html">اطلب الآن</a></div></div>
+  <a class="cover" href="toux.html" aria-label="شراب الكحة"></a>
+</article></div></div>
 </div></section>
 
 <section style="padding-top:0"><div class="wrap local reveal">
@@ -508,7 +529,7 @@ footer .logo small{color:#A9BFBA}
 <div class="dock"><a class="btn" href="#produits"><svg viewBox="0 0 24 24"><path d="M6 6h15l-2 9H8L6 3H3"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg>تسوّقوا الآن</a></div>
 <footer><div class="wrap">
   <div style="display:grid;gap:10px"><a class="logo" href="index.html" aria-label="نقاء"><span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="#FFC857" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20c0-7 5-13 15-15-1 10-7 15-14 15"/><path d="M5 20l8-8"/></svg></span><span><b>نقاء</b><small>NAQAA</small></span></a><p>علامة مغربية لمنتجات العناية بالبشرة والشعر والمكمّلات الغذائية، مصنوعة داخل مختبرات معتمدة في المغرب، مع الدفع عند الاستلام والتوصيل إلى جميع المدن.</p></div>
-  <div><h3>المنتجات</h3><a href="creme.html">كريم ضد الكلف</a><br><a href="cheveux.html">زيت لتساقط الشعر</a><br><a href="collagene.html">كولاجين بحري</a><br><a href="articulations.html">مكمّل المفاصل</a><br><a href="magnesium.html">مغنيسيوم</a><br><a href="niacinamide.html">سيروم النياسيناميد</a><br><a href="retinol.html">سيروم الريتينول</a><br><a href="shampoing-biotine.html">شامبو البيوتين</a><br><a href="anti-poux.html">شامبو ضد القمل</a><br><a href="mafasil.html">سبراي المفاصل</a><br><a href="fer.html">مكمّل الحديد</a><br><a href="vitamine-d3.html">فيتامين D3 + K2</a><br><a href="vitamine-c.html">فيتامين C</a><br><a href="melatonine.html">الميلاتونين</a><br><a href="proteine-cheveux.html">بروتين الشعر</a><br><a href="multivitamine.html">ملتي فيتامين</a><br><a href="probiotique.html">البروبيوتيك</a><br><a href="spiruline.html">السبيرولينا</a><br><a href="ginseng.html">الجينسنغ الأحمر</a><br><a href="creatine.html">الكرياتين</a><br><a href="toux.html">شراب الكحة</a><br><a href="gel-nettoyant.html">غسول الوجه</a><br><a href="anti-rides.html">كريم التجاعيد</a><br><a href="anti-acne.html">كريم حب الشباب</a><br><a href="contour-yeux.html">كريم الهالات السوداء</a><br><a href="calme.html">تهدئة الأعصاب</a><br><a href="moringa.html">المورينغا</a><br><a href="gel-hydratant.html">جل الوجه المرطّب</a><br><a href="serum-brillance.html">سيروم لمعان الشعر</a><br><a href="calcium.html">الكالسيوم</a><br></div>
+  <div><h3>الأقسام</h3><a href="index.html#visage">🌿 العناية بالوجه</a><br><a href="index.html#cheveux">💇 العناية بالشعر</a><br><a href="index.html#beaute">🌸 جمال من الداخل</a><br><a href="index.html#energie">⚡ طاقة، نوم وهدوء</a><br><a href="index.html#sante">🛡️ صحة، مفاصل ومناعة</a><br></div>
   <div><h3>معلومات</h3><a href="politique.html#livraison">التوصيل والدفع</a><br><a href="politique.html#confidentialite">سياسة الخصوصية</a><br><a href="index.html#faq">الأسئلة الشائعة</a></div>
   <p class="legal">منتجاتنا مرخّصة من طرف الوكالة المغربية للأدوية والمنتجات الصحية (AMMPS) حسب المختبر المصنّع. المكمّلات الغذائية ليست أدوية ولا تُغني عن نظام غذائي متوازن واستشارة الطبيب. مستحضرات التجميل للاستعمال الخارجي فقط. تختلف النتائج من شخص لآخر. هذا الموقع غير تابع لفيسبوك أو ميتا وغير مدعوم من طرفهما.</p>
 </div></footer>
@@ -549,28 +570,13 @@ if ("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: re
   document.querySelectorAll(".reveal, .card").forEach(el => { if (el.getBoundingClientRect().top > innerHeight) { el.classList.add("reveal", "pre"); io.observe(el); } });
 }
 
-/* filtres par catégorie */
-const cards = [...document.querySelectorAll(".card")];
-document.querySelectorAll(".filter").forEach(b => b.addEventListener("click", () => {
-  document.querySelectorAll(".filter").forEach(x => x.setAttribute("aria-pressed", x === b));
-  cards.forEach(c => { c.hidden = b.dataset.f !== "all" && c.dataset.cat !== b.dataset.f; });
-}));
-
-/* sélecteur d'objectif */
-document.querySelectorAll(".goal").forEach(b => b.addEventListener("click", () => {
-  const on = b.getAttribute("aria-pressed") !== "true";
-  document.querySelectorAll(".goal").forEach(x => x.setAttribute("aria-pressed", "false"));
-  document.querySelectorAll(".filter").forEach(x => x.setAttribute("aria-pressed", x.dataset.f === "all"));
-  cards.forEach(c => { c.hidden = false; c.classList.remove("hit", "dim"); c.querySelector(".match")?.remove(); });
-  if (!on) return;
-  b.setAttribute("aria-pressed", "true");
-  cards.forEach(c => {
-    if (c.dataset.goal === b.dataset.goal) { c.classList.add("hit"); c.querySelector(".ph").insertAdjacentHTML("beforeend", '<span class="match">مناسب لهدفك</span>'); }
-    else c.classList.add("dim");
-  });
-  const hit = cards.find(c => c.classList.contains("hit"));
-  hit && hit.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "center" });
-}));
+/* barre des rayons : surligne le rayon visible */
+(function(){ const links = [...document.querySelectorAll(".chips a")]; if (!links.length || !("IntersectionObserver" in window)) return;
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) {
+    links.forEach(l => l.classList.toggle("on", l.dataset.r === e.target.id));
+    const on = links.find(l => l.dataset.r === e.target.id); if (on) { const c = on.parentElement, a = on.getBoundingClientRect(), b = c.getBoundingClientRect(); c.scrollBy({ left: (a.left + a.width / 2) - (b.left + b.width / 2), behavior: "smooth" }); } } }),
+    { rootMargin: "-45% 0px -50% 0px" });
+  document.querySelectorAll(".shelf").forEach(x => io.observe(x)); })();
 </script>
 </body>
 </html>
